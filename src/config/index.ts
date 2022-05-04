@@ -34,5 +34,7 @@ export class App {
         this.routePrv.userRoutes.routes(this.app)
         this.routePrv.ventaRoutes.routes(this.app)
         this.routePrv.vehiculoRoutes.routes(this.app)
+        this.routePrv.marcaRoutes.routes(this.app)
+        this.routePrv.tipovehiculoRoutes.routes(this.app)
     }
 }

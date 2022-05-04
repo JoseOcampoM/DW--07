@@ -1,12 +1,17 @@
 import sequelize from "sequelize";
 import { Model, DataTypes } from "sequelize";
 import { database } from "../database/db";
+import { Marca } from "./Marca";
+import { TipoVehiculo } from "./TipoVehiculo";
 
 export class Vehiculo extends Model {
+    public id!: number;
     public modelo!: string;
     public color!: string;
     public placa!: string;
     public motor!: string;
+    public marcaId!: number;
+    public tipoVehiculoId!: number;
 }
 
 export interface VehiculoI {
@@ -14,6 +19,8 @@ export interface VehiculoI {
     color: string;
     placa: string;
     motor: string;
+    marcaId: number;
+    tipoVehiculoId: number;
 }
 
 Vehiculo.init(
@@ -41,3 +48,8 @@ Vehiculo.init(
         timestamps: true
     }
 )
+
+Marca.hasMany(Vehiculo);
+Vehiculo.belongsTo(Marca);
+TipoVehiculo.hasMany(Vehiculo);
+Vehiculo.belongsTo(TipoVehiculo);
